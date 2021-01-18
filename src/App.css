@@ -75,8 +75,13 @@ form button:hover {
   font-size: 1rem;
 }
 .complete-btn {
-  background: rgb(11, 212, 162);
+  background: #eb596e;
 }
+
+#completed {
+  background:  #59eb7e;
+}
+
 .todo-item {
   padding: 0rem 0.5rem;
 }
