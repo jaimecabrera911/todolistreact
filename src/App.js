@@ -6,7 +6,7 @@ import TodoList from "./components/TodoList";
 function App() {
   const title = "To Do List";
 
-
+  //states 
 
   const [inputText, setInputText] = useState("");
   const [todos, setTodos] = useState([]);
@@ -16,7 +16,13 @@ function App() {
   //use effect
   useEffect(() => {
     filterHandler();
+    saveLocalTodos();
   }, [todos, status])
+
+  useEffect(() => {
+    getLocalTodos();
+  }, [])
+
 
   const filterHandler = () => {
     switch (status) {
@@ -29,6 +35,19 @@ function App() {
       default:
         setFilteredTodos(todos);
         break;
+    }
+  }
+
+  const saveLocalTodos = () => {
+    localStorage.setItem("todos", JSON.stringify(todos))
+  }
+
+  const getLocalTodos = () => {
+    if (localStorage.getItem("todos") === null) {
+      localStorage.setItem('todos', JSON.stringify([]))
+    } else {
+      let todoLocal = localStorage.getItem("todos", JSON.stringify(todos))
+      console.log(todoLocal)
     }
   }
 
